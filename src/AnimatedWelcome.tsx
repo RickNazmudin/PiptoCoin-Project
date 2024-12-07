@@ -6,10 +6,11 @@ import {
   useMediaQuery,
   useTheme,
   Button,
+  Grid,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import Footer from "./Footer";
 import { Search } from "@mui/icons-material";
+import Footer from "./Footer";
 
 const AnimatedWelcome: React.FC = () => {
   const theme = useTheme();
@@ -48,171 +49,182 @@ const AnimatedWelcome: React.FC = () => {
         minHeight: "100vh",
         py: 4,
         color: "white",
-        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
-      <Container maxWidth={isMobile ? "sm" : "lg"}>
-        <Box
-          component={motion.div}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+      <Container maxWidth={isMobile ? "sm" : "lg"} sx={{ flex: 1 }}>
+        <Grid
+          container
+          spacing={2}
           sx={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            justifyContent: "space-between",
             alignItems: "center",
-            marginTop: isMobile ? "5%" : "10%",
+            minHeight: "calc(100vh - 200px)",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "start",
-              alignItems: "start",
-              textAlign: "left",
-              marginBottom: isMobile ? "2rem" : 0,
-            }}
-          >
-            {/* Animated Greeting */}
-            <motion.div variants={itemVariants}>
-              <Typography
-                variant="h3"
-                sx={{
-                  color: "#87CEFA",
-                  mb: 2,
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                }}
-              >
-                {text1.map((letter, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </Typography>
-            </motion.div>
-
-            {/* Animated Crypto Enthusiast */}
-            <motion.div variants={itemVariants}>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "#87CEFA",
-                  mb: 2,
-                  fontWeight: 500,
-                  textAlign: isMobile ? "center" : "left",
-                }}
-              >
-                {text2.map((letter, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 + index * 0.1 }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </Typography>
-            </motion.div>
-
-            {/* Detailed Description */}
+          <Grid item xs={12} md={7}>
             <Box
+              component={motion.div}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
               sx={{
-                background: "rgba(30, 30, 47, 0.8)",
-                borderRadius: 2,
-                p: 3,
-                boxShadow: 3,
-                mb: 3,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: isMobile ? "center" : "flex-start",
+                textAlign: isMobile ? "center" : "left",
               }}
             >
-              <Typography
-                variant="body1"
+              {/* Animated Greeting */}
+              <motion.div variants={itemVariants}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: "#87CEFA",
+                    mb: 2,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {text1.map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </Typography>
+              </motion.div>
+
+              {/* Animated Crypto Enthusiast */}
+              <motion.div variants={itemVariants}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "#87CEFA",
+                    mb: 2,
+                    fontWeight: 500,
+                  }}
+                >
+                  {text2.map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.5 + index * 0.1 }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </Typography>
+              </motion.div>
+
+              {/* Detailed Description */}
+              <Box
                 sx={{
-                  color: "#ebdddd",
-                  lineHeight: 1.6,
-                  mb: 2,
-                  textAlign: isMobile ? "center" : "left",
+                  background: "rgba(30, 40, 60, 0.5)",
+                  borderRadius: 2,
+                  p: 3,
+                  boxShadow: 3,
+                  mb: 3,
                 }}
               >
-                {text4.map((letter, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2.25 + index * 0.08 }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: "#87CEFA",
-                  fontStyle: "italic",
-                  textAlign: isMobile ? "center" : "left",
-                }}
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#E0E0E0",
+                    lineHeight: 1.6,
+                    mb: 2,
+                  }}
+                >
+                  {text4.map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.25 + index * 0.08 }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#87CEFA",
+                    fontStyle: "italic",
+                    textAlign: isMobile ? "center" : "left",
+                  }}
+                >
+                  "Because life is about falling, laughing, and sharing"
+                </Typography>
+              </Box>
+
+              {/* Action Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 3.5, duration: 0.5 }}
               >
-                "Because life is about falling, laughing, and sharing"
-              </Typography>
+                <Button
+                  variant="contained"
+                  startIcon={<Search />}
+                  sx={{
+                    backgroundColor: "#87CEFA",
+                    color: "black",
+                    fontWeight: "bold",
+                    borderRadius: 4,
+                    px: 4,
+                    py: 2,
+                    "&:hover": {
+                      backgroundColor: "#FFD700",
+                      boxShadow: "0 0 10px rgba(135, 202, 250, 0.5)",
+                    },
+                  }}
+                  onClick={() => (window.location.href = "/roadmap")}
+                >
+                  Explore Roadmap
+                </Button>
+              </motion.div>
             </Box>
+          </Grid>
 
-            {/* Action Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.5, duration: 0.5 }}
-            >
-              <Button
-                variant="contained"
-                startIcon={<Search />}
-                sx={{
-                  backgroundColor: "#87CEFA",
-                  color: "black",
-                  fontWeight: "bold",
-                  borderRadius: 4,
-                  px: 4,
-                  py: 2,
-                  "&:hover": {
-                    backgroundColor: "#10B981",
-                    boxShadow: "0 0 10px rgba(135, 202, 250, 0.5)",
-                  },
-                }}
-                onClick={() => (window.location.href = "/roadmap")}
-              >
-                Explore Roadmap
-              </Button>
-            </motion.div>
-          </Box>
-
-          {/* Logo/Image */}
-          <motion.img
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3, duration: 1.5 }}
-            src="./logo_PIP.png"
-            alt="Pipto Coin Logo"
-            style={{
-              zIndex: 1,
-              userSelect: "none",
-              height: "auto",
-              width: isMobile ? "14rem" : "20rem",
-              marginBottom: isMobile ? "2rem" : 0,
-              boxShadow: "0px 0px 15px rgba(135, 202, 250, 0.3)",
-              borderRadius: "50%",
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
-        </Box>
+          >
+            <motion.img
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 3, duration: 1.5 }}
+              src="./logo_PIP.png"
+              alt="Pipto Coin Logo"
+              style={{
+                zIndex: 1,
+                userSelect: "none",
+                height: "auto",
+                width: isMobile ? "14rem" : "20rem",
+                boxShadow: "0px 0px 15px rgba(135, 202, 250, 0.3)",
+                borderRadius: "50%",
+              }}
+            />
+          </Grid>
+        </Grid>
       </Container>
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: 10 }}>
+        {" "}
+        {/* Added margin-top to create space above footer */}
         <Footer />
       </Box>
     </Box>
