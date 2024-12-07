@@ -15,7 +15,7 @@ const NavigationBar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const linkVariants = {
-    hover: { scale: 1.1, color: "#f50057" },
+    hover: { scale: 1.1, color: "#87CEFA" },
   };
 
   return (
@@ -50,7 +50,7 @@ const NavigationBar = () => {
                   window.open("https://github.com/SitiNurAisahJ", "_blank")
                 }
                 sx={{
-                  color: "#ebdddd",
+                  color: "#87CEFA",
                   cursor: "pointer",
                   fontSize: isMobile ? "1.2rem" : "1.5rem",
                   width: isMobile ? "2rem" : "2.25rem",
@@ -69,7 +69,7 @@ const NavigationBar = () => {
                   )
                 }
                 sx={{
-                  color: "#ebdddd",
+                  color: "#87CEFA",
                   cursor: "pointer",
                   fontSize: isMobile ? "1.2rem" : "1.5rem",
                   width: isMobile ? "2.4rem" : "2.6rem",
@@ -98,31 +98,31 @@ const NavigationBar = () => {
               About
             </motion.a>
             <motion.a
-              href="/skills"
+              href="/features"
               variants={linkVariants}
               whileHover="hover"
               className="nav-link"
               style={{ fontSize: isMobile ? "1.2rem" : "1.4rem" }}
             >
-              Skills
+              Features
             </motion.a>
             <motion.a
-              href="/projects"
+              href="/Tokenomics"
               variants={linkVariants}
               whileHover="hover"
               className="nav-link"
               style={{ fontSize: isMobile ? "1.2rem" : "1.4rem" }}
             >
-              Projects
+              Tokenomics
             </motion.a>
             <motion.a
-              href="mailto:sitinuraisahj@gmail.com"
+              href="/Roadmap"
               variants={linkVariants}
               whileHover="hover"
               className="nav-link"
               style={{ fontSize: isMobile ? "1.2rem" : "1.4rem" }}
             >
-              Contact
+              Roadmap
             </motion.a>
           </Box>
         </Toolbar>
