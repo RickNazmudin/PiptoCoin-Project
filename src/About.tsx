@@ -125,7 +125,6 @@ const About: React.FC = () => {
         >
           About Pipto Coin
         </Typography>
-
         <Box
           sx={{
             textAlign: "center",
@@ -155,7 +154,7 @@ const About: React.FC = () => {
             "Because life is about falling, laughing, and sharing"
           </Typography>
         </Box>
-
+        <br /> <br />
         <Grid container spacing={4}>
           {aboutData.map((item) => (
             <Grid item xs={12} md={6} key={item.title}>

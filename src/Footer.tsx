@@ -42,17 +42,17 @@ const Footer = () => {
     {
       icon: <TwitterIcon />,
       color: "#1DA1F2",
-      link: "https://twitter.com/piptocoin",
+      link: "https://x.com/PipCoin370",
     },
     {
       icon: <TelegramIcon />,
       color: "#0088cc",
-      link: "https://t.me/piptocoin",
+      link: "https://t.me/+3DucBMXGsSA0Yzdl",
     },
     {
       icon: <GitHubIcon />,
       color: "#333",
-      link: "https://github.com/piptocoin",
+      link: "https://github.com/Pipto-Coin",
     },
   ];
 

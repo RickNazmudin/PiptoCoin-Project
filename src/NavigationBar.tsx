@@ -74,7 +74,7 @@ const NavigationBar = () => {
     >
       <Tooltip title="GitHub">
         <GitHub
-          onClick={() => window.open("https://github.com/", "_blank")}
+          onClick={() => window.open("https://github.com/Pipto-Coin", "_blank")}
           sx={{
             color: "#87CEFA",
             cursor: "pointer",
@@ -88,7 +88,9 @@ const NavigationBar = () => {
       </Tooltip>
       <Tooltip title="Instagram">
         <Instagram
-          onClick={() => window.open("https://www.instagram.com/", "_blank")}
+          onClick={() =>
+            window.open("https://www.instagram.com/pipcoin_370/", "_blank")
+          }
           sx={{
             color: "#87CEFA",
             cursor: "pointer",
@@ -101,7 +103,7 @@ const NavigationBar = () => {
       </Tooltip>
       <Tooltip title="Twitter (X)">
         <Twitter
-          onClick={() => window.open("https://twitter.com/", "_blank")}
+          onClick={() => window.open("https://x.com/PipCoin370", "_blank")}
           sx={{
             color: "#87CEFA",
             cursor: "pointer",
@@ -114,7 +116,9 @@ const NavigationBar = () => {
       </Tooltip>
       <Tooltip title="TikTok">
         <FaTiktok
-          onClick={() => window.open("https://www.tiktok.com/", "_blank")}
+          onClick={() =>
+            window.open("https://www.tiktok.com/@pipto_coin", "_blank")
+          }
           style={{
             color: "#87CEFA",
             cursor: "pointer",
