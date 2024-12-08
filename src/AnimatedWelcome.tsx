@@ -18,6 +18,7 @@ const AnimatedWelcome: React.FC = () => {
 
   const text1 = "Hi!".split("");
   const text2 = "Crypto Enthusiast".split("");
+  const text3 = "Pipto Coin".split(""); // Added text3
   const text4 =
     "is a satirical cryptocurrency designed to embrace the inevitability of life's stumbles. Built on the philosophy that every fall is an opportunity to laugh, grow, and support one another, Pipto Coin represents resilience and humor in the face of imperfection. This is not just a token it's a movement to rise together, one tumble at a time.".split(
       ""
@@ -124,6 +125,32 @@ const AnimatedWelcome: React.FC = () => {
                 </Typography>
               </motion.div>
 
+              {/* Animated Pipto Coin */}
+              <motion.div variants={itemVariants}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: "#FFD700", // Gold color for emphasis
+                    mb: 2,
+                    fontWeight: 600,
+                    "&:hover": {
+                      color: "#87CEFA", // Change to blue on hover
+                    },
+                  }}
+                >
+                  {text3.map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2 + index * 0.1 }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </Typography>
+              </motion.div>
+
               {/* Detailed Description */}
               <Box
                 sx={{
@@ -147,7 +174,7 @@ const AnimatedWelcome: React.FC = () => {
                       key={index}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 2.25 + index * 0.08 }}
+                      transition={{ delay: 2.75 + index * 0.08 }} // Adjusted delay
                     >
                       {letter}
                     </motion.span>
@@ -169,7 +196,7 @@ const AnimatedWelcome: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3.5, duration: 0.5 }}
+                transition={{ delay: 4, duration: 0.5 }} // Adjusted delay
               >
                 <Button
                   variant="contained"
@@ -207,7 +234,7 @@ const AnimatedWelcome: React.FC = () => {
             <motion.img
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 3, duration: 1.5 }}
+              transition={{ delay: 3.5, duration: 1.5 }} // Adjusted delay
               src="./logo_PIP.png"
               alt="Pipto Coin Logo"
               style={{
@@ -222,9 +249,7 @@ const AnimatedWelcome: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
-      <Box sx={{ mt: 10 }}>
-        {" "}
-        {/* Added margin-top to create space above footer */}
+      <Box sx={{ mt: 7 }}>
         <Footer />
       </Box>
     </Box>
