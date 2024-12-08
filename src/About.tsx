@@ -12,7 +12,7 @@ import Footer from "./Footer";
 
 // Ikon
 import LaughIcon from "@mui/icons-material/SentimentSatisfiedAlt";
-import ResilienceIcon from "@mui/icons-material/Shield"; // Ganti ikon di sini
+import ResilienceIcon from "@mui/icons-material/Shield";
 import HumorIcon from "@mui/icons-material/TagFaces";
 import MissionIcon from "@mui/icons-material/EmojiEmotions";
 
@@ -79,7 +79,7 @@ const About: React.FC = () => {
         "Build a supportive network that lifts each other up.",
         "Turn setbacks into stepping stones of collective strength.",
       ],
-      icon: <ResilienceIcon sx={{ color: "#87CEFA", fontSize: 40 }} />, // Ikon baru
+      icon: <ResilienceIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#3B82F6", // Blue
     },
     {

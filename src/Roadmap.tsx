@@ -5,7 +5,16 @@ import {
   Container,
   useMediaQuery,
   useTheme,
+  Paper,
 } from "@mui/material";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+} from "@mui/lab";
 import {
   LineChart,
   Line,
@@ -14,90 +23,78 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  TooltipProps,
 } from "recharts";
-import {
-  ValueType,
-  NameType,
-} from "recharts/types/component/DefaultTooltipContent";
+
 import NavigationBar from "./NavigationBar";
 import Footer from "./Footer";
 
-// Define interface for roadmap data
-interface RoadmapDataPoint {
-  month: number;
-  progress: number;
-  phase: string;
-  description: string;
-}
+// Icons
+import LaunchIcon from "@mui/icons-material/RocketLaunch";
+import CommunityIcon from "@mui/icons-material/Group";
+import ExpansionIcon from "@mui/icons-material/Public";
+import ScaleIcon from "@mui/icons-material/Language";
 
-// Custom Milestone Tooltip with proper typing
-const MilestoneTooltip: React.FC<TooltipProps<ValueType, NameType>> = ({
-  active,
-  payload,
-}) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload as RoadmapDataPoint;
-    return (
-      <Box
-        sx={{
-          background: "rgba(30, 40, 60, 0.9)",
-          border: "1px solid #87CEFA",
-          borderRadius: 2,
-          p: 2,
-          color: "white",
-        }}
-      >
-        <Typography variant="h6" sx={{ color: "#87CEFA", mb: 1 }}>
-          {data.phase}
-        </Typography>
-        <Typography variant="body2">
-          {data.description.split("\n").map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
-        </Typography>
-      </Box>
-    );
-  }
-  return null;
-};
-
-const CryptoRoadmap: React.FC = () => {
+const PiptoCoinRoadmap: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // Roadmap data with progress points
-  const roadmapData: RoadmapDataPoint[] = [
+  // Roadmap data with detailed information
+  const roadmapData = [
     {
       month: 0,
       progress: 10,
-      phase: "Phase 1: Launch",
-      description:
-        "Smart Contract Deployment on Binance Smart Chain\nOfficial Website Launch\nInitial Meme & Giveaway Contests",
+      phase: "Launch Phase (0-3 Months)",
+      icon: <LaunchIcon />,
+      color: "#10B981", // Emerald green
+      keyActivities: [
+        "Smart Contract Deployment on Binance Smart Chain",
+        "Official Website Launch",
+        "Inaugural Meme & Giveaway Contests",
+        "Initial Community Building",
+        "Humorous Brand Positioning",
+      ],
     },
     {
       month: 3,
       progress: 40,
-      phase: "Phase 2 : Community Development",
-      description:
-        "Influencer Collaborations\nFundraising Campaigns\nDEX Listings on PancakeSwap & Uniswap",
+      phase: "Community Development (3-6 Months)",
+      icon: <CommunityIcon />,
+      color: "#3B82F6", // Blue
+      keyActivities: [
+        "Influencer Collaborations",
+        "Social Media Meme Challenges",
+        "DEX Listings (PancakeSwap, Uniswap)",
+        "Initial Fundraising Campaigns",
+        "Engaging Community Reward Programs",
+      ],
     },
     {
       month: 6,
       progress: 70,
-      phase: "Phase 3 : Expansion Phase",
-      description:
-        "Humanitarian Partnerships\nTransparency Tool Development\nCentralized Exchange Listings",
+      phase: "Expansion Phase (6-12 Months)",
+      icon: <ExpansionIcon />,
+      color: "#8B5CF6", // Purple
+      keyActivities: [
+        "Partnerships with Humanitarian Organizations",
+        "Donation Transparency Tool Development",
+        "Centralized Exchange Listings",
+        "Global Cause-driven Initiatives",
+        "Advanced Community Engagement Strategies",
+      ],
     },
     {
       month: 12,
       progress: 100,
-      phase: " Phase 4 : Global Scaling",
-      description:
-        "International Partnerships\nAdvanced Donation Platforms\nGlobal Community Engagement",
+      phase: "Global Scaling (12+ Months)",
+      icon: <ScaleIcon />,
+      color: "#F43F5E", // Rose
+      keyActivities: [
+        "International Humanitarian Partnerships",
+        "Advanced Donation Platforms",
+        "Global Community Network Expansion",
+        "Multi-language Community Support",
+        "Continued Humor-driven Social Impact",
+      ],
     },
   ];
 
@@ -122,10 +119,22 @@ const CryptoRoadmap: React.FC = () => {
             textTransform: "uppercase",
           }}
         >
-          Project Roadmap
+          Pipto Coin Roadmap
         </Typography>
 
-        {/* Cryptocurrency-style Chart */}
+        {/* Philosophical Introduction */}
+        <Box sx={{ textAlign: "center", mb: 4, px: 4 }}>
+          <Typography
+            variant="body1"
+            sx={{ color: "#E0E0E0", maxWidth: 800, margin: "0 auto" }}
+          >
+            "Life is about falling, laughing, and sharing" - Our roadmap isn't
+            just a timeline, it's a journey of transformation, humor, and
+            collective impact.
+          </Typography>
+        </Box>
+
+        {/* Progress Chart */}
         <Box
           sx={{
             width: "100%",
@@ -133,6 +142,7 @@ const CryptoRoadmap: React.FC = () => {
             background: "rgba(30, 40, 60, 0.5)",
             borderRadius: 2,
             p: 2,
+            mb: 4,
             border: "1px solid rgba(135, 202, 250, 0.2)",
           }}
         >
@@ -150,46 +160,85 @@ const CryptoRoadmap: React.FC = () => {
                 strokeDasharray="3 3"
                 stroke="rgba(135, 202, 250, 0.1)"
               />
-              <XAxis
-                dataKey="month"
-                label={{
-                  value: "Months",
-                  position: "insideBottom",
-                  offset: -10,
-                  fill: "#87CEFA",
-                }}
-                stroke="#87CEFA"
-              />
-              <YAxis
-                label={{
-                  value: "Progress %",
-                  angle: -90,
-                  position: "insideLeft",
-                  fill: "#87CEFA",
-                }}
-                stroke="#87CEFA"
-              />
+              <XAxis dataKey="month" stroke="#87CEFA" />
+              <YAxis stroke="#87CEFA" />
               <Tooltip
-                content={<MilestoneTooltip />}
-                cursor={{ stroke: "#87CEFA", strokeWidth: 2 }}
+                contentStyle={{
+                  background: "rgba(30, 40, 60, 0.9)",
+                  border: "1px solid #87CEFA",
+                }}
+                itemStyle={{ color: "#E0E0E0" }}
               />
               <Line
                 type="monotone"
                 dataKey="progress"
                 stroke="#87CEFA"
-                activeDot={{
-                  r: 8,
-                  style: {
-                    fill: "rgba(135, 202, 250, 0.7)",
-                    stroke: "#87CEFA",
-                  },
-                }}
+                strokeWidth={3}
+                activeDot={{ r: 8 }}
               />
             </LineChart>
           </ResponsiveContainer>
         </Box>
 
-        {/* Additional Context */}
+        {/* Detailed Timeline */}
+        <Timeline position="alternate">
+          {roadmapData.map((phase, index) => (
+            <TimelineItem key={index}>
+              <TimelineSeparator>
+                <TimelineDot
+                  sx={{
+                    bgcolor: phase.color,
+                    width: 50,
+                    height: 50,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {phase.icon}
+                </TimelineDot>
+                {index < roadmapData.length - 1 && <TimelineConnector />}
+              </TimelineSeparator>
+              <TimelineContent>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 2,
+                    bgcolor: "rgba(30, 40, 60, 0.7)",
+                    color: "white",
+                    border: `1px solid ${phase.color}`,
+                  }}
+                >
+                  <Typography variant="h6" sx={{ color: phase.color }}>
+                    {phase.phase}
+                  </Typography>
+                  <Box sx={{ mt: 1 }}>
+                    {phase.keyActivities.map((activity, actIndex) => (
+                      <Typography
+                        key={actIndex}
+                        variant="body2"
+                        sx={{
+                          mb: 0.5,
+                          color: "#E0E0E0",
+                          "&::before": {
+                            content: '"• "',
+                            color: phase.color,
+                            fontWeight: "bold",
+                            mr: 1,
+                          },
+                        }}
+                      >
+                        {activity}
+                      </Typography>
+                    ))}
+                  </Box>
+                </Paper>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+
+        {/* Closing Statement */}
         <Box
           sx={{
             mt: 4,
@@ -201,18 +250,16 @@ const CryptoRoadmap: React.FC = () => {
           }}
         >
           <Typography variant="body1">
-            Our roadmap represents the progressive journey of our project, with
-            key milestones mapped against time and development progress.
+            Our roadmap is a living document, guided by community spirit, humor,
+            and the belief that every token can make a difference.
           </Typography>
         </Box>
       </Container>
-      <Box sx={{ mt: 30 }}>
-        {" "}
-        {/* Added margin-top to create space above footer */}
+      <Box sx={{ mt: 4 }}>
         <Footer />
       </Box>
     </Box>
   );
 };
 
-export default CryptoRoadmap;
+export default PiptoCoinRoadmap;

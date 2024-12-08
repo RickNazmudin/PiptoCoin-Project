@@ -20,15 +20,15 @@ import NavigationBar from "./NavigationBar";
 import Footer from "./Footer";
 
 // Custom Tooltip for Pie Chart
-interface TokenomicsTooltipProps {
-  active?: boolean; // 'active' can be optional
-  payload?: { name: string; value: number; percentage: number }[];
-}
-
-const TokenomicsTooltip: React.FC<TokenomicsTooltipProps> = ({
-  active,
-  payload,
-}) => {
+const TokenomicsTooltip: React.FC<{
+  active?: boolean;
+  payload?: {
+    name: string;
+    value: number;
+    percentage: number;
+    description: string;
+  }[];
+}> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0];
     return (
@@ -39,13 +39,17 @@ const TokenomicsTooltip: React.FC<TokenomicsTooltipProps> = ({
           borderRadius: 2,
           p: 2,
           color: "white",
+          maxWidth: 300,
         }}
       >
         <Typography variant="h6" sx={{ color: "#87CEFA", mb: 1 }}>
           {data.name}
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{ mb: 1 }}>
           {data.value}M PIP ({data.percentage}%)
+        </Typography>
+        <Typography variant="body2" sx={{ opacity: 0.8 }}>
+          {data.description}
         </Typography>
       </Box>
     );
@@ -53,7 +57,7 @@ const TokenomicsTooltip: React.FC<TokenomicsTooltipProps> = ({
   return null;
 };
 
-const Tokenomics: React.FC = () => {
+const PiptoCoinTokenomics: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -65,6 +69,8 @@ const Tokenomics: React.FC = () => {
       percentage: 50,
       icon: <CharityIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#10B981", // Emerald green
+      description:
+        "Direct donations to non-profit organizations, global and local community support.",
     },
     {
       name: "Liquidity & DEX",
@@ -72,6 +78,8 @@ const Tokenomics: React.FC = () => {
       percentage: 30,
       icon: <LiquidityIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#3B82F6", // Blue
+      description:
+        "Providing liquidity on decentralized exchanges like PancakeSwap and Uniswap.",
     },
     {
       name: "Community Rewards",
@@ -79,6 +87,8 @@ const Tokenomics: React.FC = () => {
       percentage: 10,
       icon: <CommunityIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#8B5CF6", // Purple
+      description:
+        "Giveaways, creative content rewards, and community engagement initiatives.",
     },
     {
       name: "Development",
@@ -86,6 +96,8 @@ const Tokenomics: React.FC = () => {
       percentage: 10,
       icon: <DevelopmentIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#F43F5E", // Rose
+      description:
+        "Platform development, operational costs, and future innovation.",
     },
   ];
 
@@ -110,8 +122,20 @@ const Tokenomics: React.FC = () => {
             textTransform: "uppercase",
           }}
         >
-          Tokenomics
+          Pipto Coin Tokenomics
         </Typography>
+
+        {/* Philosophical Introduction */}
+        <Box sx={{ textAlign: "center", mb: 4, px: 4 }}>
+          <Typography
+            variant="body1"
+            sx={{ color: "#E0E0E0", maxWidth: 800, margin: "0 auto" }}
+          >
+            "Life is about falling, laughing, and sharing" - This philosophy
+            drives our unique tokenomics, where every token represents not just
+            financial value, but a commitment to human connection and support.
+          </Typography>
+        </Box>
 
         {/* Total Supply Header */}
         <Box
@@ -216,9 +240,20 @@ const Tokenomics: React.FC = () => {
                         variant="body2"
                         sx={{
                           color: "#E0E0E0",
+                          mb: 0.5,
                         }}
                       >
                         {item.value}M PIP ({item.percentage}%)
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#E0E0E0",
+                          opacity: 0.7,
+                          fontSize: "0.75rem",
+                        }}
+                      >
+                        {item.description}
                       </Typography>
                     </Box>
                   </Box>
@@ -227,14 +262,28 @@ const Tokenomics: React.FC = () => {
             </Grid>
           </Grid>
         </Grid>
+
+        {/* Additional Tokenomics Context */}
+        <Box sx={{ mt: 4, textAlign: "center", px: 4 }}>
+          <Typography variant="h5" sx={{ color: "#87CEFA", mb: 2 }}>
+            Our Unique Approach
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ color: "#E0E0E0", maxWidth: 800, margin: "0 auto" }}
+          >
+            Pipto Coin isn't just another cryptocurrency. It's a movement that
+            transforms financial interactions into opportunities for humor,
+            resilience, and collective support. Every token tells a story of
+            falling, laughing, and rising together.
+          </Typography>
+        </Box>
       </Container>
-      <Box sx={{ mt: 30 }}>
-        {" "}
-        {/* Added margin-top to create space above footer */}
+      <Box sx={{ mt: 4 }}>
         <Footer />
       </Box>
     </Box>
   );
 };
 
-export default Tokenomics;
+export default PiptoCoinTokenomics;

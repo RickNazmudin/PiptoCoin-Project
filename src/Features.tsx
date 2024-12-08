@@ -15,6 +15,7 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import StakingIcon from "@mui/icons-material/AccountBalance";
 import NftIcon from "@mui/icons-material/WorkspacePremium";
 import CommunityIcon from "@mui/icons-material/Group";
+import LaughIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
 const FeatureItem = ({
   title,
@@ -68,7 +69,7 @@ const FeatureItem = ({
   </Box>
 );
 
-const Features: React.FC = () => {
+const PiptoCoinFeatures: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -76,8 +77,8 @@ const Features: React.FC = () => {
     {
       title: "Transparent Donations",
       descriptions: [
-        "Real-time blockchain-verified donation tracking.",
-        "Community-driven cause selection through decentralized voting.",
+        "50% of total supply (185M PIP) dedicated to humanitarian causes.",
+        "Public dashboard tracking donation flows and community voting.",
       ],
       icon: <MonetizationOnIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#10B981", // Emerald green
@@ -85,29 +86,38 @@ const Features: React.FC = () => {
     {
       title: "Purpose-Driven Staking",
       descriptions: [
-        "Earn crypto rewards while directly supporting humanitarian causes.",
-        "Sustainable staking model with social impact.",
+        "Staking rewards directly support social impact initiatives.",
+        "Unique staking model where earnings contribute to donations.",
       ],
       icon: <StakingIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#3B82F6", // Blue
     },
     {
-      title: "Unique NFT Rewards",
+      title: "Humorous NFT Rewards",
       descriptions: [
-        "Limited edition NFTs for significant contributors.",
-        "Collectible digital art celebrating resilience and community.",
+        "Limited edition NFTs celebrating resilience and humor.",
+        "Unique digital art for significant contributors.",
       ],
       icon: <NftIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#8B5CF6", // Purple
     },
     {
-      title: "Crypto Community Culture",
+      title: "Meme Community Culture",
       descriptions: [
-        "Engaging meme contests and social media challenges.",
-        "Building a vibrant, humorous crypto community.",
+        "Comedy-driven social media challenges and giveaways.",
+        "Engaging community through humor and shared experiences.",
       ],
       icon: <CommunityIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
       color: "#F43F5E", // Rose
+    },
+    {
+      title: "Philosophical Humor",
+      descriptions: [
+        '"Falling is part of life" - turning challenges into shared laughter.',
+        'Slogan: "Because life is about falling, laughing, and sharing."',
+      ],
+      icon: <LaughIcon sx={{ color: "#87CEFA", fontSize: 40 }} />,
+      color: "#FFA500", // Orange
     },
   ];
 
@@ -132,7 +142,7 @@ const Features: React.FC = () => {
             textTransform: "uppercase",
           }}
         >
-          Platform Features
+          Pipto Coin Features
         </Typography>
 
         <Grid container spacing={4}>
@@ -142,14 +152,27 @@ const Features: React.FC = () => {
             </Grid>
           ))}
         </Grid>
+
+        <Box sx={{ mt: 4, textAlign: "center" }}>
+          <Typography variant="h5" sx={{ color: "#87CEFA", mb: 2 }}>
+            Tokenomics Overview
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#E0E0E0" }}>
+            Total Supply: 370 Million PIP
+            <br />
+            Donation Allocation: 50% (185M PIP)
+            <br />
+            Liquidity: 30% (111M PIP)
+            <br />
+            Community & Development: 20% (74M PIP)
+          </Typography>
+        </Box>
       </Container>
-      <Box sx={{ mt: 50 }}>
-        {" "}
-        {/* Added margin-top to create space above footer */}
+      <Box sx={{ mt: 4 }}>
         <Footer />
       </Box>
     </Box>
   );
 };
 
-export default Features;
+export default PiptoCoinFeatures;
